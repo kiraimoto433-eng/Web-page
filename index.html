@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIRA — AI駆動 業務自動化 | n8n × Claude Code</title>
+  <meta name="description" content="大手HD経理DXをリード。PDFをドライブに入れるだけで経理が終わる。AI × n8nで業務フローごと再設計し、あなたの時間を本業に戻す。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#" class="header__logo">
+        <span class="header__logo-text">KIRA</span>
+        <span class="header__logo-sub">AI-Driven Automation</span>
+      </a>
+      <nav class="header__nav" id="headerNav">
+        <a href="#problem" class="header__nav-link">課題</a>
+        <a href="#roi" class="header__nav-link">ROI</a>
+        <a href="#solution" class="header__nav-link">ソリューション</a>
+        <a href="#why" class="header__nav-link">なぜ安い・速い</a>
+        <a href="#tech-stack" class="header__nav-link">AI技術</a>
+        <a href="#case-study" class="header__nav-link">実績</a>
+        <a href="#flow" class="header__nav-link">フロー</a>
+        <a href="#pricing" class="header__nav-link">料金</a>
+      </nav>
+      <div class="header__actions">
+        <a href="#cta" class="btn btn--primary">無料業務診断</a>
+      </div>
+      <button class="header__hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__grid"></div>
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__inner">
+      <span class="hero__label">AI-Driven Automation</span>
+      <h1 class="hero__title">
+        事務作業はもう、<br>
+        人がやる<span class="text-accent">仕事</span>じゃない。
+      </h1>
+      <p class="hero__subtitle">
+        ホールディングス企業（従業員700名）の経理DXをリード。<br>
+        PDFをドライブに入れるだけで経理が終わる。<br>
+        AI × n8nで業務フローごと再設計し、あなたの時間を本業に戻す。
+      </p>
+      <p class="hero__supplement">開発もAI駆動。だから速い。だから安い。</p>
+      <div class="hero__actions">
+        <a href="#cta" class="btn btn--primary btn--lg">無料で業務診断する <span class="btn__arrow">▶</span></a>
+        <a href="#solution" class="btn btn--ghost btn--lg">サービス詳細を見る</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-num" data-count="2" data-suffix="分">2<span class="hero__stat-unit">分</span></span>
+          <span class="hero__stat-label">全国データ集約（数日→2分）</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">½</span>
+          <span class="hero__stat-label">月間工数を半減推進中</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-num" data-count="0" data-suffix="件">0<span class="hero__stat-unit">件</span></span>
+          <span class="hero__stat-label">経費入力ヒューマンエラー</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>SCROLL</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+    <div class="hero__brand">KIRA</div>
+  </section>
+
+  <!-- ========== PROBLEM ========== -->
+  <section class="section section--alt" id="problem">
+    <div class="container">
+      <span class="section-label fade-in">Problem</span>
+      <h2 class="section-heading fade-in">
+        「人が足りない」は、<br>もう<span class="text-accent">解決できない。</span>
+      </h2>
+      <p class="problem-lead fade-in">人手不足は構造的な問題です。採用しても教育に半年、覚えた頃に辞める。派遣を頼めば月50万。でも事務作業の中身を見てください — PDF読んで転記、データを集めて整理、承認をもらって入力。これは「人がやるべき仕事」ですか？</p>
+      <div class="problem-stats problem-stats--4col fade-in">
+        <div class="problem-stat">
+          <p class="problem-stat__label">事務員の平均月給（社保含む）</p>
+          <p class="problem-stat__num">¥300,000<span class="problem-stat__suffix">超/月</span></p>
+          <p class="problem-stat__annual">年間 ¥3,600,000</p>
+        </div>
+        <div class="problem-stat">
+          <p class="problem-stat__label">派遣社員のコスト</p>
+          <p class="problem-stat__num">¥400,000<span class="problem-stat__suffix">〜/月</span></p>
+          <p class="problem-stat__annual">年間 ¥4,800,000</p>
+        </div>
+        <div class="problem-stat">
+          <p class="problem-stat__label">SIerに自動化を頼んだ場合</p>
+          <p class="problem-stat__num">¥500,000<span class="problem-stat__suffix">〜/月</span></p>
+          <p class="problem-stat__annual">年間 ¥6,000,000〜</p>
+        </div>
+        <div class="problem-stat problem-stat--kira">
+          <p class="problem-stat__label">自動化ワークフローの場合</p>
+          <p class="problem-stat__num">¥200,000<span class="problem-stat__suffix">〜/本</span></p>
+          <p class="problem-stat__sub">+ 保守 ¥50,000/月</p>
+          <p class="problem-stat__kira-note">作り切り。毎月の人件費ゼロ。</p>
+        </div>
+      </div>
+      <p class="problem-bottom-copy fade-in">→ 人を雇えば毎月コストが積み上がる。<span class="text-white">KIRAの自動化ワークフローなら、一度作れば</span><span class="text-accent">動き続ける。</span></p>
+    </div>
+  </section>
+
+  <!-- ========== ROI ========== -->
+  <section class="section section--dark" id="roi">
+    <div class="container">
+      <span class="section-label fade-in">ROI <span class="section-label__sub">— 投資対効果</span></span>
+      <h2 class="section-heading fade-in">
+        雇うより、<span class="text-accent">作った方が安い。</span>
+      </h2>
+      <p class="section-desc fade-in">¥200,000のワークフローを1本構築した場合、36ヶ月でどれだけ差がつくか。</p>
+      <div class="roi-graph fade-in" id="roiGraph">
+        <div class="roi-chart">
+          <div class="roi-chart__y-axis">
+            <span>¥1,500万</span>
+            <span>¥1,000万</span>
+            <span>¥500万</span>
+            <span>¥0</span>
+          </div>
+          <div class="roi-chart__bars">
+            <div class="roi-chart__bar-group">
+              <div class="roi-chart__bar-wrap">
+                <span class="roi-chart__bar-value">¥1,440万</span>
+                <div class="roi-chart__bar roi-chart__bar--haken" data-height="96"></div>
+              </div>
+              <span class="roi-chart__bar-label">派遣社員</span>
+              <span class="roi-chart__bar-sub">¥40万/月 × 36ヶ月</span>
+            </div>
+            <div class="roi-chart__bar-group">
+              <div class="roi-chart__bar-wrap">
+                <span class="roi-chart__bar-value">¥1,080万</span>
+                <div class="roi-chart__bar roi-chart__bar--jimu" data-height="72"></div>
+              </div>
+              <span class="roi-chart__bar-label">事務員（正社員）</span>
+              <span class="roi-chart__bar-sub">¥30万/月 × 36ヶ月</span>
+            </div>
+            <div class="roi-chart__bar-group">
+              <div class="roi-chart__bar-wrap">
+                <span class="roi-chart__bar-value">¥600万</span>
+                <div class="roi-chart__bar roi-chart__bar--sier" data-height="40"></div>
+              </div>
+              <span class="roi-chart__bar-label">SIer自動化</span>
+              <span class="roi-chart__bar-sub">初期¥300万 + 保守¥100万/年</span>
+            </div>
+            <div class="roi-chart__bar-group roi-chart__bar-group--highlight">
+              <div class="roi-chart__bar-wrap">
+                <span class="roi-chart__bar-value roi-chart__bar-value--accent">¥200万</span>
+                <div class="roi-chart__bar roi-chart__bar--kira" data-height="13.3"></div>
+              </div>
+              <span class="roi-chart__bar-label roi-chart__bar-label--accent">KIRA</span>
+              <span class="roi-chart__bar-sub">初期¥20万 + 保守¥5万/月</span>
+            </div>
+          </div>
+        </div>
+        <div class="roi-chart__footer">
+          <span class="roi-chart__footnote">※ 36ヶ月間の累計コスト比較（1ワークフローあたり）</span>
+          <div class="roi-chart__savings">
+            <span class="roi-chart__savings-label">KIRA導入時の削減額</span>
+            <span class="roi-chart__savings-value">最大 <strong>¥1,240万</strong> 削減</span>
+          </div>
+        </div>
+      </div>
+      <p class="roi-copy fade-in">人は毎月コストがかかる。ワークフローは、作った瞬間から稼働し続ける。</p>
+    </div>
+  </section>
+
+  <!-- ========== SOLUTION ========== -->
+  <section class="section section--dark" id="solution">
+    <div class="container">
+      <span class="section-label fade-in">Solution</span>
+      <h2 class="section-heading fade-in">
+        業務の「やり方」ごと変える。<br>AIが前提の<span class="text-accent">業務フロー</span>へ。
+      </h2>
+      <p class="section-desc fade-in">KIRAは単にツールを入れるのではなく、業務フローそのものを見直します。「今の業務をそのまま自動化」ではなく、「AIとn8nが前提の最適な業務フロー」に再設計。結果、PDFやデータをドライブに入れるだけで事務処理が完了する世界を実現します。</p>
+      <div class="steps-grid">
+        <div class="step-card fade-in">
+          <div class="step-card__number">STEP 1</div>
+          <div class="step-card__icon">
+            <svg viewBox="0 0 48 48" width="40" height="40" fill="none">
+              <circle cx="20" cy="20" r="12" stroke="#2AA99C" stroke-width="2.5"/>
+              <path d="M29 29L40 40" stroke="#2AA99C" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M15 20h10M20 15v10" stroke="#2AA99C" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">業務を見直す</h3>
+          <p class="step-card__text">現場の事務フローを徹底ヒアリング。「何をやっているか」だけでなく「なぜそうしているか」まで分解。本当に必要な作業と、惰性で続けている作業を仕分けます。</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-card__number">STEP 2</div>
+          <div class="step-card__icon">
+            <svg viewBox="0 0 48 48" width="40" height="40" fill="none">
+              <rect x="6" y="6" width="14" height="14" rx="3" stroke="#2AA99C" stroke-width="2"/>
+              <rect x="28" y="6" width="14" height="14" rx="3" stroke="#2AA99C" stroke-width="2"/>
+              <rect x="17" y="28" width="14" height="14" rx="3" stroke="#2AA99C" stroke-width="2.5"/>
+              <path d="M13 20v8M35 20v8" stroke="#2AA99C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M13 28h8M35 28h-8" stroke="#2AA99C" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">AIで再設計する</h3>
+          <p class="step-card__text">n8n × AI前提の最適な業務フローを提案。「人がやるステップ」を最小化し、PDF投入→AI読取→自動入力→通知のように、人はデータを置くだけの流れに組み替えます。</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-card__number">STEP 3</div>
+          <div class="step-card__icon">
+            <svg viewBox="0 0 48 48" width="40" height="40" fill="none">
+              <path d="M24 6C24 6 36 11 36 24C36 35 28 42 24 42C20 42 12 35 12 24C12 11 24 6 24 6Z" stroke="#2AA99C" stroke-width="2.5"/>
+              <circle cx="24" cy="23" r="4.5" stroke="#2AA99C" stroke-width="2"/>
+              <path d="M12 30L7 38L15 36L17 44L23 32" stroke="#2AA99C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M36 30L41 38L33 36L31 44L25 32" stroke="#2AA99C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="step-card__title">作って、動かす</h3>
+          <p class="step-card__text">Claude Codeで爆速開発。要件定義からワークフロー構築まで、AI駆動で従来の数分の一の期間で納品。構築後も月次で改善サイクルを回し続けます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY FAST & CHEAP ========== -->
+  <section class="section section--alt" id="why">
+    <div class="container">
+      <span class="section-label fade-in">Why</span>
+      <h2 class="section-heading fade-in">
+        AIが開発するから、<span class="text-accent">速い。</span><br>人件費がないから、<span class="text-accent">安い。</span>
+      </h2>
+      <p class="section-desc fade-in">KIRAの開発工程そのものがAI駆動です。従来のシステム開発は「人が考え、人が書き、人がテストする」。KIRAはClaude Codeで要件定義を構造化し、n8nのワークフローをAIが生成し、テストまで自動化する。だから、従来3ヶ月かかる開発が2〜4週間で終わります。</p>
+      <div class="comparison-table fade-in">
+        <div class="comparison-table__header">
+          <div class="comparison-table__col-label"></div>
+          <div class="comparison-table__col comparison-table__col--bad">従来のSIer</div>
+          <div class="comparison-table__col comparison-table__col--good">KIRA</div>
+        </div>
+        <div class="comparison-table__row">
+          <div class="comparison-table__item-label">要件定義</div>
+          <div class="comparison-table__item comparison-table__item--bad">SE 2名 × 2週間</div>
+          <div class="comparison-table__item comparison-table__item--good">Claude Codeで構造化（2〜3日）</div>
+        </div>
+        <div class="comparison-table__row">
+          <div class="comparison-table__item-label">設計</div>
+          <div class="comparison-table__item comparison-table__item--bad">設計書を人が作成</div>
+          <div class="comparison-table__item comparison-table__item--good">AIがフロー図を自動生成</div>
+        </div>
+        <div class="comparison-table__row">
+          <div class="comparison-table__item-label">開発</div>
+          <div class="comparison-table__item comparison-table__item--bad">プログラマーが手書き</div>
+          <div class="comparison-table__item comparison-table__item--good">n8nノーコード + AI生成（1〜2週間）</div>
+        </div>
+        <div class="comparison-table__row">
+          <div class="comparison-table__item-label">テスト</div>
+          <div class="comparison-table__item comparison-table__item--bad">テスト要員を配置</div>
+          <div class="comparison-table__item comparison-table__item--good">顧客環境を再現して自動テスト</div>
+        </div>
+        <div class="comparison-table__row comparison-table__row--highlight">
+          <div class="comparison-table__item-label">費用</div>
+          <div class="comparison-table__item comparison-table__item--bad comparison-table__item--em">数百万〜数千万円</div>
+          <div class="comparison-table__item comparison-table__item--good comparison-table__item--em">¥200,000〜/WF</div>
+        </div>
+        <div class="comparison-table__row comparison-table__row--highlight">
+          <div class="comparison-table__item-label">期間</div>
+          <div class="comparison-table__item comparison-table__item--bad comparison-table__item--em">3〜6ヶ月</div>
+          <div class="comparison-table__item comparison-table__item--good comparison-table__item--em">2〜4週間</div>
+        </div>
+        <div class="comparison-table__row">
+          <div class="comparison-table__item-label">保守</div>
+          <div class="comparison-table__item comparison-table__item--bad">月額数十万円</div>
+          <div class="comparison-table__item comparison-table__item--good">¥50,000〜/月</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AI TECH STACK ========== -->
+  <section class="section section--dark" id="tech-stack">
+    <div class="container">
+      <span class="section-label fade-in">Tech Stack</span>
+      <h2 class="section-heading fade-in">
+        複数のAIを<br><span class="text-accent">適材適所</span>で使い分ける
+      </h2>
+      <p class="section-desc fade-in">1つのAIに依存しません。各AIの得意領域を見極め、選定し、最適な組み合わせで業務自動化を設計します。</p>
+      <div class="tech-grid">
+
+        <div class="tech-card tech-card--featured fade-in">
+          <span class="tech-card__badge">中核</span>
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <circle cx="10" cy="20" r="5.5" stroke="#EA4B71" stroke-width="2"/>
+              <circle cx="30" cy="10" r="5.5" stroke="#EA4B71" stroke-width="2"/>
+              <circle cx="30" cy="30" r="5.5" stroke="#EA4B71" stroke-width="2"/>
+              <line x1="15.5" y1="17" x2="24.5" y2="13" stroke="#EA4B71" stroke-width="1.5"/>
+              <line x1="15.5" y1="23" x2="24.5" y2="27" stroke="#EA4B71" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">n8n</h4>
+            <p class="tech-card__role">ワークフロー自動化エンジン</p>
+            <p class="tech-card__desc">全自動化の中核。500以上のSaaS/APIを接続し、データの流れを設計・実行する</p>
+          </div>
+        </div>
+
+        <div class="tech-card tech-card--featured fade-in">
+          <span class="tech-card__badge">核心</span>
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <rect x="4" y="8" width="32" height="24" rx="4" stroke="#CC785C" stroke-width="2"/>
+              <path d="M11 16l5 4-5 4" stroke="#CC785C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="19" y1="24" x2="30" y2="24" stroke="#CC785C" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">Claude Code</h4>
+            <p class="tech-card__role">AI駆動開発</p>
+            <p class="tech-card__desc">要件定義の構造化、n8nワークフロー生成、テスト自動化。開発速度の源泉</p>
+          </div>
+        </div>
+
+        <div class="tech-card fade-in">
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <path d="M20 7C13 7 8 12 8 19C8 25 11 29 16 31V35L20 31.5L24 35V31C29 29 32 25 32 19C32 12 27 7 20 7Z" stroke="#CC785C" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="20" cy="19" r="5" stroke="#CC785C" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">Claude</h4>
+            <p class="tech-card__role">高度な文書理解・生成</p>
+            <p class="tech-card__desc">PDF解析、契約書読み取り、複雑な判断が必要なデータ分類</p>
+          </div>
+        </div>
+
+        <div class="tech-card fade-in">
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <path d="M20 9C14 9 9 13 9 18C9 21 11 24 14 25.5V31L19 27.5C19.3 27.5 19.7 27.5 20 27.5C26 27.5 31 23.5 31 18.5C31 13.5 26 9 20 9Z" stroke="#10A37F" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="15" cy="18" r="1.5" fill="#10A37F"/>
+              <circle cx="20" cy="18" r="1.5" fill="#10A37F"/>
+              <circle cx="25" cy="18" r="1.5" fill="#10A37F"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">ChatGPT</h4>
+            <p class="tech-card__role">汎用AI処理</p>
+            <p class="tech-card__desc">データクレンジング、テキスト変換、フォーマット標準化</p>
+          </div>
+        </div>
+
+        <div class="tech-card fade-in">
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <path d="M20 7L27 20L20 33L13 20Z" stroke="#4285F4" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M7 20L20 14L33 20L20 26Z" stroke="#4285F4" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">Gemini</h4>
+            <p class="tech-card__role">大規模データ分析</p>
+            <p class="tech-card__desc">大量データの傾向分析、異常検知、レポート生成</p>
+          </div>
+        </div>
+
+        <div class="tech-card fade-in">
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <rect x="8" y="5" width="20" height="30" rx="3" stroke="#669DF6" stroke-width="2"/>
+              <line x1="12" y1="13" x2="24" y2="13" stroke="#669DF6" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="12" y1="18" x2="24" y2="18" stroke="#669DF6" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="12" y1="23" x2="20" y2="23" stroke="#669DF6" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M28 10L33 15L28 20" stroke="#669DF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">NotebookLM</h4>
+            <p class="tech-card__role">ナレッジ管理</p>
+            <p class="tech-card__desc">社内マニュアルのAI化。「聞けば答えてくれる業務マニュアル」の構築</p>
+          </div>
+        </div>
+
+        <div class="tech-card fade-in">
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <path d="M20 7L22.5 17L32 14.5L25 22L31.5 32L20 26.5L8.5 32L15 22L8 14.5L17.5 17Z" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">Genspark / Manus</h4>
+            <p class="tech-card__role">リサーチ・情報収集</p>
+            <p class="tech-card__desc">業界動向の自動調査、競合分析、市場データ収集の自動化</p>
+          </div>
+        </div>
+
+        <div class="tech-card fade-in">
+          <div class="tech-card__icon">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <rect x="6" y="6" width="28" height="28" rx="4" stroke="#34A853" stroke-width="2"/>
+              <path d="M13 19l5 5 10-10" stroke="#34A853" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="tech-card__content">
+            <h4 class="tech-card__name">Google Apps Script</h4>
+            <p class="tech-card__role">Google Workspace連携</p>
+            <p class="tech-card__desc">スプレッドシート・フォーム・カレンダーの自動化。GAS × n8nで完全統合</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="n8n-screenshot fade-in">
+        <p class="n8n-screenshot__label">n8n ワークフロー画面（実際の構築例）</p>
+        <div class="n8n-screenshot__grid">
+          <div class="n8n-screenshot__img-wrap">
+            <img src="images/n8n_workflow_2.png" alt="n8nワークフロー画面 — 経費集約サブワークフロー" loading="lazy">
+          </div>
+          <div class="n8n-screenshot__img-wrap">
+            <img src="images/n8n_workflow_1.png" alt="n8nワークフロー画面 — AI連携の自動化フロー" loading="lazy">
+          </div>
+        </div>
+        <p class="n8n-screenshot__caption">実際の業務自動化ワークフロー。ノードをつなぐだけで複雑な業務プロセスを自動化。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== USE CASES ========== -->
+  <section class="section section--alt" id="use-cases">
+    <div class="container">
+      <span class="section-label fade-in">Use Cases</span>
+      <h2 class="section-heading fade-in">
+        「PDFをドライブに入れるだけ」<br>の<span class="text-accent">具体例</span>
+      </h2>
+      <p class="section-desc fade-in">こんな業務が、AIで完全に変わります。</p>
+      <div class="before-after fade-in">
+        <div class="before-after__header">
+          <div class="before-after__col-label">Before（今）</div>
+          <div></div>
+          <div class="before-after__col-label before-after__col-label--after">After — KIRA</div>
+        </div>
+        <div class="before-after__row">
+          <div class="before-after__before">請求書PDFをメールで受け取り、Excelに手入力</div>
+          <div class="before-after__arrow">→</div>
+          <div class="before-after__after">PDFをドライブに投入 → AIが読み取り → 会計システムに自動入力</div>
+        </div>
+        <div class="before-after__row">
+          <div class="before-after__before">各支部からExcelを集めて手動で統合</div>
+          <div class="before-after__arrow">→</div>
+          <div class="before-after__after">各支部がドライブにファイルを置くだけ → n8nが自動集約・統合</div>
+        </div>
+        <div class="before-after__row">
+          <div class="before-after__before">健康診断の結果を紙からシステムに転記</div>
+          <div class="before-after__arrow">→</div>
+          <div class="before-after__after">スキャンPDFをドライブに投入 → AIがデータ抽出 → 管理システムに自動登録</div>
+        </div>
+        <div class="before-after__row">
+          <div class="before-after__before">経費精算の承認メールを1件ずつ確認</div>
+          <div class="before-after__arrow">→</div>
+          <div class="before-after__after">申請 → AIが自動分類・異常チェック → 通知ツールで自動通知 → ワンタップ承認</div>
+        </div>
+        <div class="before-after__row">
+          <div class="before-after__before">月次レポートを手作業で作成</div>
+          <div class="before-after__arrow">→</div>
+          <div class="before-after__after">データが自動集約 → AIがレポート下書き生成 → 人は確認・修正だけ</div>
+        </div>
+        <div class="before-after__row">
+          <div class="before-after__before">ドライバーの走行ルート・売上・変動費をスプレッドシートで手動集計。月末に数日かかる</div>
+          <div class="before-after__arrow">→</div>
+          <div class="before-after__after">データをスプレッドシートに入力 → n8nが自動集計 → ドライバー別・トラック別・ルート別の収益性レポートが自動生成</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CASE STUDY ========== -->
+  <section class="section section--dark" id="case-study">
+    <div class="container">
+      <span class="section-label fade-in">Case Study</span>
+      <h2 class="section-heading fade-in"><span class="text-accent">実績</span></h2>
+      <p class="section-desc fade-in">実際の導入プロジェクトから生まれた成果です。</p>
+      <div class="case-grid">
+
+        <div class="case-card fade-in">
+          <span class="case-card__badge">Case 01</span>
+          <h3 class="case-card__company">ホールディングス企業</h3>
+          <p class="case-card__meta">従業員 700名 / 経理DX</p>
+          <div class="case-card__body">
+            <div class="case-card__section">
+              <span class="case-card__label">課題</span>
+              <p>経理部門の8業務プロセスが手作業。経費承認に月28時間、全国支部データの集約に数日。</p>
+            </div>
+            <div class="case-card__section">
+              <span class="case-card__label">対応</span>
+              <p>n8n × AI で経費マスタ自動入力・会計ソフト連携・全国データの並列自動集約を構築。</p>
+            </div>
+            <div class="case-card__results">
+              <div class="case-result">
+                <span class="case-result__before">数日</span>
+                <span class="case-result__arrow">↓</span>
+                <span class="case-result__after">2分</span>
+                <span class="case-result__label">全国データ集約</span>
+              </div>
+              <div class="case-result">
+                <span class="case-result__before">手作業</span>
+                <span class="case-result__arrow">↓</span>
+                <span class="case-result__after">0件</span>
+                <span class="case-result__label">ヒューマンエラー</span>
+              </div>
+              <div class="case-result">
+                <span class="case-result__before">60h</span>
+                <span class="case-result__arrow">↓</span>
+                <span class="case-result__after">30h</span>
+                <span class="case-result__label">月間工数（推進中）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card fade-in">
+          <span class="case-card__badge">Case 02</span>
+          <h3 class="case-card__company">沖縄県アミューズメント企業</h3>
+          <p class="case-card__meta">アミューズメント / 複数店舗展開</p>
+          <div class="case-card__body">
+            <div class="case-card__section">
+              <span class="case-card__label">課題</span>
+              <p>健康診断の事務業務（紙データの転記・管理）に膨大な時間がかかっていた。</p>
+            </div>
+            <div class="case-card__section">
+              <span class="case-card__label">対応</span>
+              <p>紙 → PDF → ドライブ投入の流れを構築。AIでデータ抽出し管理システムに自動登録。</p>
+            </div>
+            <div class="case-card__section">
+              <span class="case-card__label">成果</span>
+              <p>事務処理時間の大幅削減。担当者は本来の店舗運営業務に集中可能に。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card fade-in">
+          <span class="case-card__badge">Case 03</span>
+          <h3 class="case-card__company">IT企業・社内DX</h3>
+          <p class="case-card__meta">従業員 41名 / バックオフィス自動化</p>
+          <div class="case-card__body">
+            <div class="case-card__section">
+              <span class="case-card__label">対応</span>
+              <ul class="case-card__list">
+                <li>請求書メールを自社システムに自動格納</li>
+                <li>各種求人媒体からの応募を一元管理、Slackに通知</li>
+                <li>営業商談・面談・面接の一元管理ダッシュボード作成</li>
+              </ul>
+            </div>
+            <div class="case-card__section">
+              <span class="case-card__label">成果</span>
+              <p>社内DX基盤の確立。AI活用セミナー11種類の運用体制を構築。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OUTCOME ========== -->
+  <section class="section section--alt" id="outcome">
+    <div class="container">
+      <span class="section-label fade-in">Outcome</span>
+      <h2 class="section-heading fade-in">
+        事務作業がなくなった先に、<br>何を<span class="text-accent">しますか？</span>
+      </h2>
+      <p class="section-desc fade-in">自動化のゴールは「楽になる」ことではありません。事務作業に費やしていた時間を、本業に戻すことです。</p>
+      <div class="outcome-table fade-in">
+        <div class="outcome-row outcome-row--header">
+          <div class="outcome-cell outcome-cell--industry">業界</div>
+          <div class="outcome-cell">自動化される業務</div>
+          <div class="outcome-cell outcome-cell--highlight">創出される時間の使い道</div>
+        </div>
+        <div class="outcome-row">
+          <div class="outcome-cell outcome-cell--industry">ホテル・旅館</div>
+          <div class="outcome-cell">予約管理、経費精算、勤怠集計</div>
+          <div class="outcome-cell outcome-cell--highlight">接客品質の向上、顧客体験の設計</div>
+        </div>
+        <div class="outcome-row">
+          <div class="outcome-cell outcome-cell--industry">飲食チェーン</div>
+          <div class="outcome-cell">仕入データ入力、売上集約、シフト管理</div>
+          <div class="outcome-cell outcome-cell--highlight">メニュー開発、店舗改善、新規出店準備</div>
+        </div>
+        <div class="outcome-row">
+          <div class="outcome-cell outcome-cell--industry">製造業</div>
+          <div class="outcome-cell">受発注入力、在庫データ集約、品質報告書</div>
+          <div class="outcome-cell outcome-cell--highlight">製品開発、品質管理、現場改善</div>
+        </div>
+        <div class="outcome-row">
+          <div class="outcome-cell outcome-cell--industry">アミューズメント</div>
+          <div class="outcome-cell">健康診断管理、売上報告、各店舗データ統合</div>
+          <div class="outcome-cell outcome-cell--highlight">店舗運営の最適化、新規事業の企画</div>
+        </div>
+        <div class="outcome-row">
+          <div class="outcome-cell outcome-cell--industry">運送業</div>
+          <div class="outcome-cell">走行ルート・売上・変動費の手動集計、日報管理</div>
+          <div class="outcome-cell outcome-cell--highlight">ドライバー別収益分析、ルート最適化、配車戦略</div>
+        </div>
+        <div class="outcome-row">
+          <div class="outcome-cell outcome-cell--industry">士業・専門</div>
+          <div class="outcome-cell">書類作成、データ整理、顧問先への報告</div>
+          <div class="outcome-cell outcome-cell--highlight">高付加価値なアドバイザリー業務</div>
+        </div>
+      </div>
+      <p class="outcome-message fade-in">「人がやるべき仕事」に、人が戻れる。</p>
+    </div>
+  </section>
+
+  <!-- ========== FLOW ========== -->
+  <section class="section section--dark" id="flow">
+    <div class="container">
+      <span class="section-label fade-in">Flow</span>
+      <h2 class="section-heading fade-in">プロジェクトの<span class="text-accent">流れ</span></h2>
+      <div class="flow-timeline">
+
+        <div class="flow-step fade-in">
+          <div class="flow-step__marker">
+            <span class="flow-step__num">01</span>
+          </div>
+          <div class="flow-step__content">
+            <div class="flow-step__header">
+              <h3 class="flow-step__title">無料業務診断</h3>
+              <span class="flow-step__duration">30分〜1時間</span>
+              <span class="flow-step__free">Free</span>
+            </div>
+            <p class="flow-step__text">現在の事務フローをヒアリング。「何に何時間かかっているか」を可視化。自動化ROIの概算を提示。</p>
+          </div>
+        </div>
+
+        <div class="flow-step fade-in">
+          <div class="flow-step__marker">
+            <span class="flow-step__num">02</span>
+          </div>
+          <div class="flow-step__content">
+            <div class="flow-step__header">
+              <h3 class="flow-step__title">業務フロー再設計</h3>
+              <span class="flow-step__duration">1週間</span>
+            </div>
+            <p class="flow-step__text">AI × n8n前提の最適業務フローを設計。「人がやるステップ」を最小化した新しい業務の形を提案。</p>
+          </div>
+        </div>
+
+        <div class="flow-step fade-in">
+          <div class="flow-step__marker">
+            <span class="flow-step__num">03</span>
+          </div>
+          <div class="flow-step__content">
+            <div class="flow-step__header">
+              <h3 class="flow-step__title">AI駆動で構築</h3>
+              <span class="flow-step__duration">2〜4週間</span>
+            </div>
+            <p class="flow-step__text">Claude Codeで要件を構造化し、n8nワークフローを構築。顧客環境を再現してテスト。</p>
+          </div>
+        </div>
+
+        <div class="flow-step fade-in">
+          <div class="flow-step__marker">
+            <span class="flow-step__num">04</span>
+          </div>
+          <div class="flow-step__content">
+            <div class="flow-step__header">
+              <h3 class="flow-step__title">導入・引き渡し</h3>
+              <span class="flow-step__duration">1週間</span>
+            </div>
+            <p class="flow-step__text">実データで動作検証。現場担当者への操作説明。「ドライブにファイルを置くだけ」の世界を体験してもらう。</p>
+          </div>
+        </div>
+
+        <div class="flow-step fade-in">
+          <div class="flow-step__marker flow-step__marker--ongoing">
+            <span class="flow-step__num">05</span>
+          </div>
+          <div class="flow-step__content">
+            <div class="flow-step__header">
+              <h3 class="flow-step__title">月次改善</h3>
+              <span class="flow-step__duration">継続</span>
+            </div>
+            <p class="flow-step__text">エラー監視・改善レポート・追加ワークフロー構築。業務が変われば自動化も進化する。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section class="section section--alt" id="pricing">
+    <div class="container">
+      <span class="section-label fade-in">Pricing</span>
+      <h2 class="section-heading fade-in"><span class="text-accent">料金</span></h2>
+      <p class="section-desc fade-in">開発工程そのものがAI駆動だから実現できる価格。人月計算ではなく、成果物に対する報酬。<br>必要なのは「人件費」ではなく、「<span class="text-accent">仕組みへの投資</span>」です。</p>
+      <div class="pricing-grid pricing-grid--3col">
+
+        <div class="pricing-card fade-in">
+          <h3 class="pricing-card__name">無料業務診断</h3>
+          <p class="pricing-card__sub">ヒアリング + 自動化提案書 + ROI試算</p>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount">¥0</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>現場ヒアリング（30分〜1時間）</li>
+            <li>自動化可能業務のリストアップ</li>
+            <li>削減時間・コストの概算提示</li>
+            <li>ROI試算レポート</li>
+          </ul>
+          <a href="#cta" class="btn btn--outline">無料で始める</a>
+        </div>
+
+        <div class="pricing-card pricing-card--featured fade-in">
+          <div class="pricing-card__recommended">Recommended — 推奨</div>
+          <h3 class="pricing-card__name">ワークフロー構築</h3>
+          <p class="pricing-card__sub">1業務プロセスの自動化（単発）</p>
+          <div class="pricing-card__price">
+            <span class="pricing-card__from">from</span>
+            <span class="pricing-card__amount">¥200,000</span>
+            <span class="pricing-card__unit">/本</span>
+          </div>
+          <div class="pricing-card__compare">SIer比 1/5〜1/10</div>
+          <ul class="pricing-card__features">
+            <li>業務フロー再設計込み</li>
+            <li>n8n + AI ワークフロー構築</li>
+            <li>テスト・引き渡し</li>
+            <li>納期：2〜4週間</li>
+          </ul>
+          <a href="#cta" class="btn btn--primary">相談する</a>
+        </div>
+
+        <div class="pricing-card fade-in">
+          <h3 class="pricing-card__name">運用保守</h3>
+          <p class="pricing-card__sub">既存WFの監視・改善（月額）</p>
+          <div class="pricing-card__price">
+            <span class="pricing-card__from">from</span>
+            <span class="pricing-card__amount">¥50,000</span>
+            <span class="pricing-card__unit">/月</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>エラー監視・アラート対応</li>
+            <li>月次改善レポート</li>
+            <li>軽微な変更・調整</li>
+          </ul>
+          <a href="#cta" class="btn btn--outline">相談する</a>
+        </div>
+
+      </div>
+      <p class="pricing-note fade-in">人月ではなく、<span class="text-accent">仕組みへの投資</span>。一度作れば、ずっと働く。</p>
+    </div>
+  </section>
+
+  <!-- ========== PROFILE ========== -->
+  <section class="section section--dark" id="profile">
+    <div class="container">
+      <span class="section-label fade-in">Profile</span>
+      <h2 class="section-heading fade-in">代表者<span class="text-accent">プロフィール</span></h2>
+      <div class="profile-card fade-in">
+        <div class="profile-card__photo">
+          <img src="images/profile_kira_imoto.jpg" alt="井本 翠" loading="lazy">
+        </div>
+        <div class="profile-card__content">
+          <div class="profile-card__name-block">
+            <h3 class="profile-card__name">井本 翠</h3>
+            <span class="profile-card__name-en">Kira Imoto</span>
+          </div>
+          <p class="profile-card__title">AI駆動 業務自動化コンサルタント</p>
+          <p class="profile-card__bio">IT企業でエンジニア経験を経て独立。ホールディングス企業（従業員700名）の経理DXプロジェクトにリードエンジニアとして参画。n8n × Claude Code × 各種AIを駆使し、全国データの自動集約、経費処理の自動化を実現。「ツールを入れる人」ではなく「業務をAIで再設計する人」。初回ヒアリングは完全無料。資料請求・営業電話なし。</p>
+          <blockquote class="profile-card__quote">
+            「事務作業は人がやる仕事じゃない。<br>人は、人にしかできない仕事をするべきだ。」
+          </blockquote>
+          <div class="profile-card__tags">
+            <span class="profile-tag">n8n</span>
+            <span class="profile-tag">Claude Code</span>
+            <span class="profile-tag">業務フロー設計</span>
+            <span class="profile-tag">AI駆動開発</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section section--cta" id="cta">
+    <div class="container">
+      <div class="cta-block fade-in">
+        <span class="section-label">Contact</span>
+        <h2 class="cta-block__heading">
+          まず30分、業務の<br>「<span class="text-accent">健康診断</span>」をしませんか？
+        </h2>
+        <p class="cta-block__desc">無料のヒアリングで、御社の事務作業のうち「AIで自動化できる部分」と「削減できる時間・コスト」を可視化します。初回ヒアリングは完全無料。資料請求・営業電話なし。</p>
+        <div class="cta-block__buttons">
+          <a href="mailto:imoto@linew.co.jp" class="btn btn--primary btn--xl">無料で業務診断する <span class="btn__arrow">▶</span></a>
+          <a href="#" class="btn btn--ghost btn--xl">サービス資料をダウンロード</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <span class="footer__logo-text">KIRA</span>
+            <span class="footer__logo-sub">AI-Driven Automation</span>
+          </div>
+          <p class="footer__tagline">AI駆動開発 × n8nで<br>「安い・速い・止まらない」業務自動化</p>
+        </div>
+        <nav class="footer__nav">
+          <div class="footer__nav-col">
+            <h5 class="footer__nav-title">サービス</h5>
+            <a href="#solution">業務自動化コンサルティング</a>
+            <a href="#tech-stack">AIテックスタック</a>
+            <a href="#pricing">料金プラン</a>
+          </div>
+          <div class="footer__nav-col">
+            <h5 class="footer__nav-title">実績・事例</h5>
+            <a href="#case-study">導入事例</a>
+            <a href="#use-cases">活用例</a>
+          </div>
+          <div class="footer__nav-col">
+            <h5 class="footer__nav-title">お問い合わせ</h5>
+            <a href="#cta">無料業務診断</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 KIRA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

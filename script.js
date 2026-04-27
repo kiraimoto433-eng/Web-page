@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardTilt();
   initMouseGlow();
   initCountUp();
-  initROIGraph();
 });
 
 /* ── Header scroll effect ── */
@@ -198,19 +197,3 @@ function initCountUp() {
   statNums.forEach(el => observer.observe(el));
 }
 
-/* ── ROI Graph scroll animation ── */
-function initROIGraph() {
-  const graph = document.getElementById('roiGraph');
-  if (!graph) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        graph.classList.add('animated');
-        observer.unobserve(graph);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  observer.observe(graph);
-}
